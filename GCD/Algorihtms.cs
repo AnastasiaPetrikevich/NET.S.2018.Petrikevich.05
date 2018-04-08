@@ -11,6 +11,8 @@ namespace GCD
     /// </summary>
     public class Algorihtms
     {
+        public delegate int DelegateGCD(int firstNumber, int secondNumber);
+
         /// <summary>
         /// Overload version of GradestCommonDivisor for two numbers.
         /// </summary>
@@ -18,22 +20,8 @@ namespace GCD
         /// <returns>Gradest Common Divisor.</returns>
         public static int GradestCommonDivisor(params int[] numbers)
         {
-            if (numbers == null)
-            {
-                throw new ArgumentNullException(nameof(numbers));
-            }
-
-            if (numbers.Length == 0)
-            {
-                throw new ArgumentException(nameof(numbers));
-            }
-
-            int result = numbers[0];
-            for (int i = 1; i < numbers.Length; i++)
-            {
-                result = GradestCommonDivisor(result, numbers[i]);
-            }
-            return result;
+            DelegateGCD gcd = GradestCommonDivisor;
+            return FindGCG(gcd, numbers);
         }
 
         /// <summary>
@@ -75,23 +63,10 @@ namespace GCD
         /// <returns>Gradest Common Divisor.</returns>
         public static int BinaryGradestCommonDivisor(params int[] numbers)
         {
-            if (numbers == null)
-            {
-                throw new ArgumentNullException(nameof(numbers));
-            }
-
-            if (numbers.Length == 0)
-            {
-                throw new ArgumentException(nameof(numbers));
-            }
-
-            int result = numbers[0];
-            for (int i = 1; i < numbers.Length; i++)
-            {
-                result = BinaryGradestCommonDivisor(result, numbers[i]);
-            }
-            return result;
+            DelegateGCD gcd = BinaryGradestCommonDivisor;
+            return FindGCG(gcd,numbers);
         }
+
         /// <summary>
         /// Calculates GradestCommonDivisor for two numbers using Stein algorithm (binary).
         /// </summary>
@@ -141,7 +116,32 @@ namespace GCD
 
             return BinaryGradestCommonDivisor((secondNumber - firstNumber) >> 1, firstNumber);
         }
+    
 
+        /// <summary>
+        /// Calculates GradestCommonDivisor.
+        /// </summary>
+        /// <param name="gcd">Type of algorithm.</param>
+        /// <param name="numbers">Numbers for which Gradest Common Divisor searched.</param>
+        /// <returns>Gradest Common Divisor.</returns>
+        public static int FindGCG(DelegateGCD gcd, params int[] numbers)
+        {
+            if (numbers == null)
+            {
+                throw new ArgumentNullException(nameof(numbers));
+            }
 
+            if (numbers.Length == 0)
+            {
+                throw new ArgumentException(nameof(numbers));
+            }
+
+            int result = numbers[0];
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                result = gcd(result, numbers[i]);
+            }
+            return result;
+        }
     }
 }

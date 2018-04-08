@@ -21,7 +21,7 @@ namespace ExtensionMethods
         public static string DoubleToBinaryString(this double number)
         {
             DoubleToLongStruct numberInBinary = new DoubleToLongStruct(number);
-            return ConvertToBinary(numberInBinary.Long64bits);
+            return ConvertToBinary(numberInBinary.Long64Bits);
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace ExtensionMethods
                 long64bits = 0;
                 double64bits = number;
             }
-
-            public long Long64bits => long64bits;
+            
+            public long Long64Bits => long64bits;
         }
     }
 }

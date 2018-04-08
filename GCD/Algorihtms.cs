@@ -119,9 +119,9 @@ namespace GCD
     
 
         /// <summary>
-        /// Calculates GradestCommonDivisor.
+        /// Calculates Gradest Common Divisor.
         /// </summary>
-        /// <param name="gcd">Type of algorithm.</param>
+        /// <param name="gcd">Type of algorihtm.</param>
         /// <param name="numbers">Numbers for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
         public static int FindGCG(DelegateGCD gcd, params int[] numbers)

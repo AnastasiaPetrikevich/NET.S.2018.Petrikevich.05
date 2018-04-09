@@ -79,7 +79,7 @@ namespace GCD
         }
 
         /// <summary>
-        /// Calculates GradestCommonDivisor for two numbers using Stein algorithm (binary).
+        /// Calculates GradestCommonDivisor for three numbers using Stein algorithm (binary).
         /// </summary>
         /// <param name="firstNumber">First number for which Gradest Common Divisor searched.</param>
         /// <param name="secondNumber">Second number for which Gradest Common Divisor searched.</param>

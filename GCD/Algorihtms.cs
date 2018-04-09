@@ -11,8 +11,6 @@ namespace GCD
     /// </summary>
     public class Algorihtms
     {
-        public delegate int DelegateGCD(int firstNumber, int secondNumber);
-
         /// <summary>
         /// Overload version of GradestCommonDivisor for two numbers.
         /// </summary>
@@ -20,15 +18,28 @@ namespace GCD
         /// <returns>Gradest Common Divisor.</returns>
         public static int GradestCommonDivisor(params int[] numbers)
         {
-            DelegateGCD gcd = GradestCommonDivisor;
+            Func<int, int, int> gcd = GradestCommonDivisor;
             return FindGCG(gcd, numbers);
+        }
+
+        /// <summary>
+        /// Calculates GradestCommonDivisor for three numbers using Euclid algorithm.
+        /// </summary>
+        /// <param name="firstNumber">First number for which Gradest Common Divisor searched.</param>
+        /// <param name="secondNumber">Second number for which Gradest Common Divisor searched.</param>
+        /// <param name="thirdNumber">Third number for which Gradest Common Divisor searched.</param>
+        /// <returns>Gradest Common Divisor.</returns>
+        public static int GradestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            Func<int, int, int> gcd = GradestCommonDivisor;
+            return FindGCG(gcd, firstNumber, secondNumber, thirdNumber);
         }
 
         /// <summary>
         /// Calculates GradestCommonDivisor for two numbers using Euclid algorithm.
         /// </summary>
-        /// <param name="firstNumber">first number for which Gradest Common Divisor searched.</param>
-        /// <param name="secondNumber">second number for which Gradest Common Divisor searched.</param>
+        /// <param name="firstNumber">First number for which Gradest Common Divisor searched.</param>
+        /// <param name="secondNumber">Second number for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
         public static int GradestCommonDivisor(int firstNumber, int secondNumber)
         {
@@ -63,8 +74,21 @@ namespace GCD
         /// <returns>Gradest Common Divisor.</returns>
         public static int BinaryGradestCommonDivisor(params int[] numbers)
         {
-            DelegateGCD gcd = BinaryGradestCommonDivisor;
-            return FindGCG(gcd,numbers);
+            Func<int,int,int> gcd = BinaryGradestCommonDivisor;
+            return FindGCG(gcd, numbers);
+        }
+
+        /// <summary>
+        /// Calculates GradestCommonDivisor for two numbers using Stein algorithm (binary).
+        /// </summary>
+        /// <param name="firstNumber">First number for which Gradest Common Divisor searched.</param>
+        /// <param name="secondNumber">Second number for which Gradest Common Divisor searched.</param>
+        /// <param name="thirdNumber">Third number for which Gradest Common Divisor searched.</param>
+        /// <returns>Gradest Common Divisor.</returns>
+        public static int BinaryGradestCommonDivisor(int firstNumber, int secondNumber,int thirdNumber)
+        {
+            Func<int, int, int> gcd = BinaryGradestCommonDivisor;
+            return FindGCG(gcd, firstNumber, secondNumber, thirdNumber);
         }
 
         /// <summary>
@@ -116,15 +140,14 @@ namespace GCD
 
             return BinaryGradestCommonDivisor((secondNumber - firstNumber) >> 1, firstNumber);
         }
-    
 
         /// <summary>
-        /// Calculates Gradest Common Divisor.
+        /// Calculates Gradest Common Divisor for params.
         /// </summary>
         /// <param name="gcd">Type of algorihtm.</param>
         /// <param name="numbers">Numbers for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
-        public static int FindGCG(DelegateGCD gcd, params int[] numbers)
+        public static int FindGCG(Func<int, int, int> gcd, params int[] numbers)
         {
             if (numbers == null)
             {
@@ -141,6 +164,21 @@ namespace GCD
             {
                 result = gcd(result, numbers[i]);
             }
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates Gradest Common Divisor for three numbers.
+        /// </summary>
+        /// <param name="gcd">Type of algorihtm.</param>
+        /// <param name="firstNumber">First number for which Gradest Common Divisor searched.</param>
+        /// <param name="secondNumber">Second number for which Gradest Common Divisor searched.</param>
+        /// <param name="thirdNumber">Third number for which Gradest Common Divisor searched.</param>
+        /// <returns>Gradest Common Divisor.</returns>
+        public static int FinGCD(Func<int, int, int> gcd, int firstNumber, int secondNumber, int thirdNumber)
+        {
+            int result = gcd(firstNumber, secondNumber);
+            result = gcd(result, thirdNumber);
             return result;
         }
     }

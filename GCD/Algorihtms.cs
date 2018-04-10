@@ -16,7 +16,7 @@ namespace GCD
         /// </summary>
         /// <param name="numbers">Numbers for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
-        public static int GradestCommonDivisor(params int[] numbers) => FindGCG(GradestCommonDivisor, numbers);
+        public static int GradestCommonDivisor(params int[] numbers) => FindGCD(GradestCommonDivisor, numbers);
 
         /// <summary>
         /// Calculates GradestCommonDivisor for three numbers using Euclid algorithm.
@@ -26,7 +26,7 @@ namespace GCD
         /// <param name="thirdNumber">Third number for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
         public static int GradestCommonDivisor(int firstNumber, int secondNumber, int thirdNumber)=>
-            FindGCG(GradestCommonDivisor, firstNumber, secondNumber, thirdNumber);
+            FindGCD(GradestCommonDivisor, firstNumber, secondNumber, thirdNumber);
 
         /// <summary>
         /// Calculates GradestCommonDivisor for two numbers using Euclid algorithm.
@@ -66,7 +66,7 @@ namespace GCD
         /// <param name="numbers">Numbers for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
         public static int BinaryGradestCommonDivisor(params int[] numbers)=>
-            FindGCG(BinaryGradestCommonDivisor, numbers);
+            FindGCD(BinaryGradestCommonDivisor, numbers);
     
         /// <summary>
         /// Calculates GradestCommonDivisor for three numbers using Stein algorithm (binary).
@@ -76,7 +76,7 @@ namespace GCD
         /// <param name="thirdNumber">Third number for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
         public static int BinaryGradestCommonDivisor(int firstNumber, int secondNumber,int thirdNumber)=>
-            FindGCG(BinaryGradestCommonDivisor, firstNumber, secondNumber, thirdNumber);      
+            FindGCD(BinaryGradestCommonDivisor, firstNumber, secondNumber, thirdNumber);      
 
         /// <summary>
         /// Calculates GradestCommonDivisor for two numbers using Stein algorithm (binary).
@@ -134,7 +134,7 @@ namespace GCD
         /// <param name="gcd">Type of algorihtm.</param>
         /// <param name="numbers">Numbers for which Gradest Common Divisor searched.</param>
         /// <returns>Gradest Common Divisor.</returns>
-        private static int FindGCG(Func<int, int, int> gcd, params int[] numbers)
+        private static int FindGCD(Func<int, int, int> gcd, params int[] numbers)
         {
             if (numbers == null)
             {
